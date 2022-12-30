@@ -1,0 +1,10 @@
+ 9758 ?        Ss     0:00 /usr/sbin/apache2 -k start
+ 9765 ?        S      0:00 /usr/sbin/apache2 -k start
+ 9766 ?        S      0:00 /usr/sbin/apache2 -k start
+ 9767 ?        S      0:00 /usr/sbin/apache2 -k start
+ 9773 ?        S      0:00 /usr/sbin/apache2 -k start
+ 9802 ?        S      0:00 /usr/sbin/apache2 -k start
+ 9805 ?        S      0:00 /usr/sbin/apache2 -k start
+ 9806 ?        S      0:00 /usr/sbin/apache2 -k start
+ 9835 ?        S      0:00 sh -c ps -axn |grep apache2 > stopkill.txt
+ 9837 ?        S      0:00 grep apache2

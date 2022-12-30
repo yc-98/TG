@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Send Packet</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+   .box{
+border:1px solid grey;margin-left:25%;margin-right:25%;padding:5px;
+}
+body{
+background-image: url("back.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;}
+
+</style>
+</head>
+<body >
+<div class="container-fluid">
+  <div class="row content">
+<form action="result.php" method="post">
+<br><br>
+<h1 align="center"> IPv4 Traffic Generator </h1><br>
+<div class="row box">
+	<div class="col-xs-6 " style="margintop:5px;">
+	<h4>Source Address of IPv4</h4>
+	</div>
+	<div class="col-xs-6">
+	<input type="text" name="sip"  align="middle" required><br>    
+	</div>
+</div>
+<div class="row box">
+	<div class="col-xs-6 ">
+	<h4>Destination Address of IPv4</h4>
+	</div>
+	<div class="col-xs-6">
+	<input type="text" name="dip"  align="middle" required><br>    
+	</div>
+	
+</div>
+<div class="row box">
+	
+	<div class="col-xs-6 ">
+	<h4>Protocols</h4>
+	</div>
+	<div class="col-xs-6">
+	<select name="prodrop" onclick="disabledrop(this)">
+			        <option value="udp">UDP</option>
+			        <option value="tcp">TCP</option>
+			        <option value="icmp">ICMP</option>
+		
+		            </select>
+	<br>
+	</div>
+	<script>
+          function disabledrop(obj1){
+          
+            var v1=obj1.value;
+          
+            if(v1 == "icmp")
+            {
+              
+            document.getElementById("sp").disabled=true;
+            document.getElementById("dp").disabled=true;
+            }
+            else{
+              
+              document.getElementById("sp").disabled=false;
+              document.getElementById("dp").disabled=false;
+            }
+
+          }
+        </script>
+	
+	
+</div>
+<div class="row box">
+	
+	<div class="col-xs-6">
+	<h4>Source Port</h4>
+	</div>
+	<div class="col-xs-6">
+	<select name="spdrop" id="sp">
+	    <option value="443">443</option>
+	    <option value="21">21</option>
+	    <option value="80">80</option>
+	    <option value="22">22</option>
+	    <option value="53">53</option>
+	    <option value="25">25</option>
+	</select><br>
+	</div>
+	
+</div>
+<div class="row box">
+	
+	<div class="col-xs-6">
+	<h4>Destination Port</h4>
+	</div>
+	<div class="col-xs-6">
+	<select name="dpdrop" id="dp">
+	    <option value="443">443</option>
+	    <option value="21">21</option>
+	    <option value="80">80</option>
+	    <option value="22">22</option>
+	    <option value="53">53</option>
+	    <option value="25">25</option>
+	  </select><br>
+	</div>
+	
+</div>
+<div class="row box">
+	
+	<div class="col-xs-6">
+	<h4>Number of Packets</h4>
+	</div>
+	<div class="col-xs-6">
+	<input type="text" name="nop"  align="middle" required disabled id="A">
+	<select name="nopdrop" id="nofp" onChange="checkOption(this)">
+	    <option value="cont">Continuous</option>
+	    <option value="ncont">Non-Continuous</option>
+	  </select>
+	</div>
+	<script>
+	function checkOption(obj) {
+	    var input = document.getElementById("A");
+	    input.disabled = obj.value == "cont";
+	}
+	</script>
+</div>
+<div class="row box">
+	
+	<div class="col-xs-6">
+	<h4>Payload length per packet</h4>
+	</div>
+	<div class="col-xs-6">
+	<select name="pldrop" >
+	    <option value="512">512</option>
+	    <option value="8">8</option>
+	  </select><br>
+	</div>
+	
+</div>
+<div class="row box">
+	
+	<div class="col-xs-6" style="margintop:5px;">
+	<h4>Interpacket Gap</h4>
+	</div>
+	<div class="col-xs-6">
+	<input type="text" name="pltime"  align="middle"> <br>in SECONDS(WHOLE NO >=0)<br>    
+	</div>
+	
+</div>
+<div class="row box">
+	
+	<div class="col-xs-6 " style="margintop:5px;">
+	<h4>Payload Option</h4>
+	</div>
+	<div class="col-xs-6 ">
+	<input type="text" name="pl"  align="middle" required id="B"><br> 
+	<input type="radio"  name="payload" value="own" checked onchange="disa()"s>Define my own
+	<input type="radio"  name="payload" value="ran" onchange="enab()">Random
+	</div>
+	<script>
+	function disa() {
+	document.getElementById("B").disabled = false;
+	}
+	function enab() {
+	document.getElementById("B").disabled = true;
+	}
+	</script>
+</div>
+
+
+
+<br><br>
+<div class="col-sm-3"></div>
+<div class="col-sm-6" align="center">
+<input class="btn btn-success btn-md"  type="submit" name="submit" value="RUN" />
+
+</div>
+<div class="col-sm-3"></div>
+<br>.<br><br>.
+
+</form>
+<form action="k1.php">
+<div class="col-sm-3"></div>
+<div class="col-sm-6" align="center">
+<input class="btn btn-danger btn-md"   type="submit" name="submit" value="Stop" />
+</div>
+<div class="col-sm-3"></div><br><br><br>.
+
+</form>
+</div>
+</div>
+
+</body>
+</html>
